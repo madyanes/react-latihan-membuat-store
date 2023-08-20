@@ -7,6 +7,18 @@ function createStore() {
    * 4. Memperbarui state
    */
 
+  let state
+
+  const getState = () => state
+
   // mengembalikan objek (store)
-  return {}
+  return {
+    getState
+  }
 }
+
+// consume
+const store = createStore()
+
+// getting the state
+store.getState()
