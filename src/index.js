@@ -30,6 +30,9 @@ function createStore() {
 // consume
 const store = createStore()
 
+// getting the state
+store.getState()
+
 // subscribe to state changes
 const unsubscribe = store.subscribe(() => {
   console.log('State changed.')
@@ -38,6 +41,3 @@ const unsubscribe = store.subscribe(() => {
 
 // unsubscribe
 unsubscribe()
-
-// getting the state
-store.getState()
