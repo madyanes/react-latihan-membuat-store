@@ -8,17 +8,36 @@ function createStore() {
    */
 
   let state
+  let listeners = []
 
   const getState = () => state
 
+  const subscribe = (listener) => {
+    listeners.push(listener)
+
+    return () => {
+      listeners = listeners.filter((listenerItem) => listenerItem !== listener)
+    }
+  }
+
   // mengembalikan objek (store)
   return {
-    getState
+    getState,
+    subscribe
   }
 }
 
 // consume
 const store = createStore()
+
+// subscribe to state changes
+const unsubscribe = store.subscribe(() => {
+  console.log('State changed.')
+  console.log('UI shoud be re-rendered.')
+})
+
+// unsubscribe
+unsubscribe()
 
 // getting the state
 store.getState()
