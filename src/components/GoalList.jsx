@@ -1,17 +1,24 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { addGoalActionCreator, deleteGoalActionCreator } from '../states/goals/action';
 import GoalInput from './GoalInput';
 import GoalItem from './GoalItem';
 
 function GoalList() {
   const goals = useSelector((states) => states.goals); // TODO: Get goals from store;
+  const dispatch = useDispatch();
 
   function onAddGoal(text) {
-    // TODO: dispatch action ADD_GOAL
+    const id = `goal-${+new Date()}`
+    dispatch(
+      addGoalActionCreator({ id, text })
+    );
   }
 
   function onDeleteGoal(id) {
-    // TODO: dispatch action DELETE_GOAL
+    dispatch(
+      deleteGoalActionCreator(id)
+    )
   }
 
   return (
