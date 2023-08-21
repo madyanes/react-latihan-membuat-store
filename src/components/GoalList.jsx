@@ -1,9 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import GoalInput from './GoalInput';
 import GoalItem from './GoalItem';
 
 function GoalList() {
-  const goals = []; // TODO: Get goals from store;
+  const goals = useSelector((states) => states.goals); // TODO: Get goals from store;
 
   function onAddGoal(text) {
     // TODO: dispatch action ADD_GOAL
