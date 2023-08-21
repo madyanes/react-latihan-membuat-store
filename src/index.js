@@ -70,3 +70,11 @@ store.subscribe(() => {
 store.dispatch(
   addTodoActionCreator({ id: 1, text: 'Learn React' })
 )
+
+store.dispatch(
+  addTodoActionCreator({ id: 2, text: 'Learn Redux' })
+)
+
+store.dispatch(
+  addTodoActionCreator({ id: 3, text: 'Learn JavaScript' })
+)
