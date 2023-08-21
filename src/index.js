@@ -62,18 +62,11 @@ function todosReducer(todos = [], action = {}) {
 // consume
 const store = createStore()
 
+// subscribe to state changes
+store.subscribe(() => {
+  console.log('State changed!', store.getState())
+})
+
 store.dispatch(
   addTodoActionCreator({ id: 1, text: 'Learn React' })
 )
-
-// getting the state
-store.getState()
-
-// subscribe to state changes
-const unsubscribe = store.subscribe(() => {
-  console.log('State changed.')
-  console.log('UI shoud be re-rendered.')
-})
-
-// unsubscribe
-unsubscribe()
