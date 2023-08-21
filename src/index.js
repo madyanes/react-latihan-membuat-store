@@ -20,10 +20,19 @@ function createStore() {
     }
   }
 
+  // akan men-trigger `store` untuk mengubah state sesuai dengan action yang diberikan pada argumen
+  // selain itu, dispatch juga akan memanggil seluruh `listeners` dalam store dengan tujuan untuk memberitahu bahwa state dalam store berubah
+  // jadi, nantinya UI bisa secara reaktif me-render setiap kali ada perubahan state
+  const dispatch = (action) => {
+    state = todosReducer(state, action)
+    listeners.forEach((listener) => listener())
+  }
+
   // mengembalikan objek (store)
   return {
     getState,
-    subscribe
+    subscribe,
+    dispatch
   }
 }
 
@@ -52,6 +61,10 @@ function todosReducer(todos = [], action = {}) {
 
 // consume
 const store = createStore()
+
+store.dispatch(
+  addTodoActionCreator({ id: 1, text: 'Learn React' })
+)
 
 // getting the state
 store.getState()
