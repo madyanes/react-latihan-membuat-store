@@ -1,9 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import TodoInput from './TodoInput';
 import TodoItem from './TodoItem';
 
 function TodoList() {
-  const todos = []; // TODO: Get todos from store;
+  const todos = useSelector((states) => states.todos); // TODO: Get todos from store;
 
   function onAddTodo(text) {
     // TODO: dispatch action ADD_TODO
