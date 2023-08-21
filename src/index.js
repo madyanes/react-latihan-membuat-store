@@ -114,3 +114,13 @@ store.dispatch(deleteTodoActionCreator(3))
 
 // mengubah Learn React menjadi complete
 store.dispatch(toggleTodoActionCreator(1))
+
+store.dispatch(
+  addGoalActionCreator({ id: 1, text: 'Get a Doctorate' })
+);
+
+store.dispatch(
+  addGoalActionCreator({ id: 2, text: 'Be an Entrepreneur' })
+);
+
+store.dispatch(deleteGoalActionCreator(1));
