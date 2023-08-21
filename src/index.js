@@ -19,6 +19,13 @@ function deleteTodoActionCreator(id) {
   }
 }
 
+function toggleTodoActionCreator(id) {
+  return {
+    type: 'TOGGLE_TODO',
+    payload: { id }
+  }
+}
+
 // fungsi reducer sebagai perantara STATE dan ACTION, bertugas memperbarui nilai state
 // membutuhkan parameter state saat ini dan parameter action untuk memanipulasi state tsb
 // mengembalikan state dengan nilai yang telah diperbarui
@@ -29,6 +36,16 @@ function todosReducer(todos = [], action = {}) {
 
   if (action.type === 'DELETE_TODO') {
     return todos.filter((todo) => todo.id !== action.payload.id)
+  }
+
+  if (action.type === 'TOGGLE_TODO') {
+    return todos.map((todo) => {
+      if (todo.id === action.payload.id) {
+        return { ...todo, complete: !todo.complete }
+      }
+
+      return todo
+    })
   }
 
   return todos
@@ -56,3 +73,6 @@ store.dispatch(
 
 // menghapus todo dengan id 3
 store.dispatch(deleteTodoActionCreator(3))
+
+// mengubah Learn React menjadi complete
+store.dispatch(toggleTodoActionCreator(1))
