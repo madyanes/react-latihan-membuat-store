@@ -1,4 +1,4 @@
-import { createStore } from './redux'
+import { createStore } from 'redux'
 
 // fungsi action creator merupakan fungsi yang menghindari kesalahan-kesalahan dalam membuat objek action seperti tipo atau inkonsisten dalam menuliskan struktur propertinya
 function addTodoActionCreator({ id, text }) {
