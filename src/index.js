@@ -51,6 +51,37 @@ function todosReducer(todos = [], action = {}) {
   return todos
 }
 
+function addGoalActionCreator({ id, text }) {
+  return {
+    type: 'ADD_GOAL',
+    payload: {
+      id,
+      text
+    }
+  };
+}
+
+function deleteGoalActionCreator(id) {
+  return {
+    type: 'DELETE_GOAL',
+    payload: {
+      id
+    }
+  };
+}
+
+function goalsReducer(goals = [], action = {}) {
+  if (action.type === 'ADD_GOAL') {
+    return [...goals, action.payload];
+  }
+
+  if (action.type === 'DELETE_GOAL') {
+    return goals.filter((goal) => goal.id !== action.payload.id);
+  }
+
+  return goals;
+}
+
 // consume
 const store = createStore(todosReducer)
 
