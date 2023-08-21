@@ -43,6 +43,10 @@ function addTodoActionCreator({ id, text }) {
 // membutuhkan parameter state saat ini dan parameter action untuk memanipulasi state tsb
 // mengembalikan state dengan nilai yang telah diperbarui
 function todosReducer(todos = [], action = {}) {
+  if (action.type === 'ADD_TODO') {
+    return [...todos, action.payload]
+  }
+
   return todos
 }
 
