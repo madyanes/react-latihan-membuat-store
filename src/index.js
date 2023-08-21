@@ -82,8 +82,15 @@ function goalsReducer(goals = [], action = {}) {
   return goals;
 }
 
+function rootReducer(state = {}, action = {}) {
+  return {
+    todos: todosReducer(state.todos, action),
+    goals: goalsReducer(state.goals, action)
+  }
+}
+
 // consume
-const store = createStore(todosReducer)
+const store = createStore(rootReducer)
 
 // subscribe to state changes
 store.subscribe(() => {
