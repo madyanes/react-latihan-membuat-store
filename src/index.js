@@ -27,6 +27,18 @@ function createStore() {
   }
 }
 
+// fungsi action creator merupakan fungsi yang menghindari kesalahan-kesalahan dalam membuat objek action seperti tipo atau inkonsisten dalam menuliskan struktur propertinya
+function addTodoActionCreator({ id, text }) {
+  return {
+    type: 'ADD_TODO',
+    payload: {
+      id,
+      text,
+      complete: false
+    }
+  }
+}
+
 // consume
 const store = createStore()
 
