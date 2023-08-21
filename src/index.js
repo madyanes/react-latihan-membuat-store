@@ -39,6 +39,13 @@ function addTodoActionCreator({ id, text }) {
   }
 }
 
+// fungsi reducer sebagai perantara STATE dan ACTION, bertugas memperbarui nilai state
+// membutuhkan parameter state saat ini dan parameter action untuk memanipulasi state tsb
+// mengembalikan state dengan nilai yang telah diperbarui
+function todosReducer(todos = [], action = {}) {
+  return todos
+}
+
 // consume
 const store = createStore()
 
